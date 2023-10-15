@@ -12,8 +12,15 @@ def main():
     else:
         args = sys.argv[1]
         listings = ListingsScraper().scrape(args)
-        print(listings)
+        for entry in listings:
+            print("\n", entry["title"])
+            print(entry["href"])
+            print(entry["id"])
+            print(entry["media_condition"])
+            print(entry["sleeve_condition"])
+            print(entry["ships_from"])
+            print(entry["price"])
+
 
 if __name__ == "__main__":
     main()
-    print("success")
