@@ -1,17 +1,22 @@
+import logging
 from typing import List
 
 import requests
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet
 
+from logger import logger
+
 class ListingsScraper:
-    def __init__(self):
+    def __init__(self, logger: logging.Logger = logger):
         self.base_url = "https://discogs.com/sell/release/"
         self.url_parameters = "?sort=listed%2Cdesc&limit=25"
+        self.logger = logger
     
     def get_listings_soup(self, release_id: int) -> ResultSet:
         headers = {"User-Agent": "friendly"}
-        print(f"{self.base_url}{release_id}{self.url_parameters}")
+        #print(f"{self.base_url}{release_id}{self.url_parameters}")
+        self.logger.info(f"Requesting {self.base_url}{release_id}{self.url_parameters}")
         response = requests.get(f"{self.base_url}{release_id}{self.url_parameters}", headers=headers)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
