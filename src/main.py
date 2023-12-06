@@ -6,7 +6,7 @@ from scraper import ListingsScraper
 from logger import logger
 #from helper import get_new_listing_ids
 
-RELEASE_IDS = ["631068",]
+RELEASE_IDS = ["631068", "10085219"]
 
 def main():
     '''
