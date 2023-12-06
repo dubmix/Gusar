@@ -51,6 +51,7 @@ class ListingsScraper:
     def scrape(self, release_id: int):
         listings = []
         soup_listings = self.get_listings_soup(release_id)
+        self.logger.info(f"Found {len(soup_listings)} listings")
         for listing in soup_listings:
             listings.append(self.parse_listing(listing))
         return listings
