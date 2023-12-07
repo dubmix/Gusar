@@ -26,7 +26,7 @@ class ListingsScraper:
         item_description_title = listing.find("a", {"class": "item_description_title"})
         title = item_description_title.text
         href = item_description_title.attrs["href"]
-        #print(f"Parsing listing with href {href}")
+        self.logger.debug(f"Parsing listing with URL {href}")
         listing_id = href.split("/")[-1]
         item_condition = listing.find("p", {"class": "item_condition"})
         media_condition = item_condition.find_all("span")[2].text.strip().split(")")[0] + ")"
